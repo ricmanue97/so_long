@@ -6,25 +6,13 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:52:08 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/08/28 17:10:46 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:34:27 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "mlx_linux/mlx.h"
-#include "X11/X.h"
-#include "X11/keysym.h"
+#include "so_long.h"
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int		img_width;
-	int		img_height;
-	int		x_point;
-	int		y_point;
-}				t_vars;
+
 
 int	key_hook(int keycode, t_vars *vars)
 {
@@ -80,13 +68,23 @@ int main(void)
 	t_vars	vars;
 
 
-	vars.y_point = 100;
-	vars.x_point = 100;
-	path = "./test1.xpm";
+	vars.y_point = 0;
+	vars.x_point = 0;
+	path = "./floor1.xpm";
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello World!");
 	vars.img = mlx_xpm_file_to_image(vars.mlx, path, &vars.img_width, &vars.img_height);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.img, vars.x_point, vars.y_point);
+	while (vars.x_point < 1920)
+	{
+		vars.y_point = 0;
+		while(vars.y_point < 1080)
+		{
+			mlx_put_image_to_window(vars.mlx, vars.win, vars.img, vars.x_point, vars.y_point);
+			vars.y_point = vars.y_point + vars.img_width;
+		}
+		mlx_put_image_to_window(vars.mlx, vars.win, vars.img, vars.x_point, vars.y_point);
+		vars.x_point = vars.x_point + vars.img_width;
+	}
 	mlx_hook(vars.win, DestroyNotify, NoEventMask, ft_close, &vars);
 	mlx_hook(vars.win, KeyPress, KeyPressMask, key_hook, &vars);
 	mlx_loop(vars.mlx);
