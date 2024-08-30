@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/08/30 12:31:50 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:42:31 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "X11/X.h"
 #include "X11/keysym.h"
 #include <stdbool.h>
-
+#include "./get_next_line/get_next_line.h"
 
 typedef struct	s_game{
 	void		*mlx;
@@ -37,7 +37,7 @@ typedef struct	s_player{
 }				t_player;
 
 typedef struct	s_map{
-	char		**map;
+	char		**map_ber;
 	void		*img_floor1;
 	void		*img_floor2;
 	void		*img_wall;
@@ -45,6 +45,7 @@ typedef struct	s_map{
 	void		*img_exit;
 	int			map_width;
 	int			map_height;
+	bool		error;
 	bool		exit;
 }				t_map;
 
