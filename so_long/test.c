@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:52:08 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/08/29 14:34:27 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/08/30 10:27:22 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,34 @@ int	key_hook(int keycode, t_vars *vars)
 	if(keycode == XK_a)
 	{
 		mlx_clear_window(vars->mlx, vars->win);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img,
-		 vars->x_point = vars->x_point - vars->img_width, vars->y_point);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img_player,
+		 vars->x_player = vars->x_player - vars->img_width, vars->y_player);
 	}
 
 	if(keycode == XK_w)
 	{
 		mlx_clear_window(vars->mlx, vars->win);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img,
-		 vars->x_point, vars->y_point = vars->y_point - vars->img_height);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img_player,
+		 vars->x_player, vars->y_player = vars->y_player - vars->img_height);
 	}
 	if(keycode == XK_d)
 	{
 		mlx_clear_window(vars->mlx, vars->win);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img,
-		 vars->x_point = vars->x_point + vars->img_width, vars->y_point);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img_player,
+		 vars->x_player = vars->x_player + vars->img_width, vars->y_player);
 	}
 	if(keycode == XK_s)
 	{
 		mlx_clear_window(vars->mlx, vars->win);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img,
-		 vars->x_point, vars->y_point = vars->y_point + vars->img_height);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img_player,
+		 vars->x_player, vars->y_player = vars->y_player + vars->img_height);
 	}
 	return (0);
 }
 
 int	ft_close(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->img);
+	mlx_destroy_image(vars->mlx, vars->img_player);
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
@@ -79,10 +79,10 @@ int main(void)
 		vars.y_point = 0;
 		while(vars.y_point < 1080)
 		{
-			mlx_put_image_to_window(vars.mlx, vars.win, vars.img, vars.x_point, vars.y_point);
+			mlx_put_image_to_window(vars.mlx, vars.win, vars.img_player, vars.x_point, vars.y_point);
 			vars.y_point = vars.y_point + vars.img_width;
 		}
-		mlx_put_image_to_window(vars.mlx, vars.win, vars.img, vars.x_point, vars.y_point);
+		mlx_put_image_to_window(vars.mlx, vars.win, vars.img_player, vars.x_point, vars.y_point);
 		vars.x_point = vars.x_point + vars.img_width;
 	}
 	mlx_hook(vars.win, DestroyNotify, NoEventMask, ft_close, &vars);
