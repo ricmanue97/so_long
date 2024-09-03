@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:52:23 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/03 14:42:25 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:21:55 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,29 @@ int ft_strlen(char *str)
 		i++;
 	return (i);
 }
+void	ft_height(t_map *map)
+{
+	int i;
+
+	i = 0;
+	while (map->map_ber[i])
+	{
+		map->map_height = i;
+		i++;
+	}
+}
+void	ft_height(t_map *map, int i)
+{
+	int j;
+
+	j = 0;
+	while (map->map_ber[i][j])
+	{
+		map->map_height = j;
+		j++;
+	}
+}
+
 
 int	map_check(t_map *map)
 {
