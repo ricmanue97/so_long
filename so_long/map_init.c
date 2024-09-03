@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:52:23 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/08/30 17:11:10 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:42:25 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,32 @@ int ft_strlen(char *str)
 		i++;
 	return (i);
 }
-int mapveri(t_game *game)
-{
-	int i;
-	int j;
 
+int	map_check(t_map *map)
+{
+	int	i;
+	int	count;
+	t_map *tmp;
+
+	tmp = map;
+	i = -1;
+	while(tmp->map_ber[0][i++])
+	{
+		count = ft_strlen(tmp->map_ber[i]);
+		if (tmp->map_ber[0][i] != '1')
+			perror("Map has to be surrounded by walls\n");
+	}
+	i = -1;
+	while(tmp->map_ber[++i])
+	{
+		if (tmp->map_ber[i][0] != '1' || tmp->map_ber[i][count] != '1')
+			perror("Map has to be surrounded by walls\n");
+	}
+	while(tmp->map_ber[i - 1][count--])
+	{
+		if (tmp->map_ber[i][count] != '1')
+			perror("Map has to be surrounded by walls\n");
+	}
 }
 
 void ft_map_init(char *path, t_game *game)
@@ -46,5 +67,5 @@ void ft_map_init(char *path, t_game *game)
 		i++;
 		free(line);
 	}
-	map_veri(game);
+	map_check(game->map);
 }
