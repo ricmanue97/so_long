@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:52:23 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/03 16:21:55 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:09:04 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,10 @@ void	ft_height(t_map *map)
 		i++;
 	}
 }
-void	ft_height(t_map *map, int i)
+int ft_check_row(char **row, int i)
 {
-	int j;
 
-	j = 0;
-	while (map->map_ber[i][j])
-	{
-		map->map_height = j;
-		j++;
-	}
 }
-
 
 int	map_check(t_map *map)
 {
@@ -54,24 +46,17 @@ int	map_check(t_map *map)
 	t_map *tmp;
 
 	tmp = map;
-	i = -1;
-	while(tmp->map_ber[0][i++])
+	ft_heigt(tmp);
+	i=0;
+	while (tmp->map_ber[i])
 	{
-		count = ft_strlen(tmp->map_ber[i]);
-		if (tmp->map_ber[0][i] != '1')
-			perror("Map has to be surrounded by walls\n");
+		count = ft_strlen(tmp->map_ber[0]);
+		if (count != ft_strlen(tmp->map_ber[i]));
+			return(1);
+		if(ft_check_row(tmp->map_ber, i) == 1)
+			return(1);
 	}
-	i = -1;
-	while(tmp->map_ber[++i])
-	{
-		if (tmp->map_ber[i][0] != '1' || tmp->map_ber[i][count] != '1')
-			perror("Map has to be surrounded by walls\n");
-	}
-	while(tmp->map_ber[i - 1][count--])
-	{
-		if (tmp->map_ber[i][count] != '1')
-			perror("Map has to be surrounded by walls\n");
-	}
+
 }
 
 void ft_map_init(char *path, t_game *game)
