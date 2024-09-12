@@ -1,41 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_init.c                                         :+:      :+:    :+:   */
+/*   valid_map_checker.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 11:52:23 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 17:31:06 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/09/12 17:24:14 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_strlen(char *str)
-{
-	int i;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
-}
-void	ft_height(t_map *map)
-{
-	int i;
-
-	i = 0;
-	while (map->map_ber[i])
-	{
-		map->map_height = i;
-		i++;
-	}
-}
-
-void ft_map_init(char *path, t_game *game)
-{
-	
-}
