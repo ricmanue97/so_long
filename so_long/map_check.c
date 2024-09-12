@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 14:06:21 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:03:22 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,23 @@ void	ft_wall_check (t_game *game)
 	}
 }
 
-void	ft_sprite_check(t_game *game)
+void	ft_sprite_limit_check(t_game *game, int i, int j)
 {
+	char	*ber_array;
 
+	ber_array = game->map->map_ber[i];
+	while (j < game->map->map_width)
+	{
+		if ((ber_array[j] != 0) && (ber_array[j] != 1) && (ber_array[j] != 'P')
+			&& (ber_array[j] != 'C') && (ber_array[j] != 'E'))
+			ft_error_management("Error : ivalid sprite\n", game);
+		if (ber_array[j] == 'P')
+			game->player++;
+		else if (ber_array[j] == 'C')
+			game->collectible++;
+		else if (ber_array[j] == 'E')
+			game->exit++;
+		j++;
+	}
 }
+
