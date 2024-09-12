@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 15:38:16 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:43:39 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 		j++;
 	}
 }
-void	map_check(t_game *game)
+void	ft_map_sprite_check(t_game *game)
 {
 	int i;
 
@@ -81,3 +81,25 @@ void	map_check(t_game *game)
 		i++;
 	}
 }
+
+void	ft_map_check(t_game *game)
+{
+	int	i;
+	int	len;
+	int	len_tmp;
+
+	if (game->map->map_ber[0] == NULL)
+		ft_error_management("Error : map file is empty\n", game);
+	i = 0;
+	len = ft_strlen(game->map->map_ber[0]);
+	while (i < game->map->map_height)
+	{
+		len_tmp = ft_strlen(game->map->map_ber[i]);
+		if (len != len_tmp)
+		ft_error_management("Error : map is not rectangular\n", game);
+		i++;
+	}
+	ft_wall_check(game);
+	ft_map_sprite_check(game);
+}
+
