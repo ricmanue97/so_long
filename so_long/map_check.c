@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 15:03:22 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:38:16 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,16 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 		j++;
 	}
 }
+void	map_check(t_game *game)
+{
+	int i;
 
+	i = 0;
+	while (i < game->map->map_height)
+	{
+		ft_sprite_limit_check(game, i, 0);
+		if ((game->player > 1) || (game->exit > 1))
+		ft_error_management("Error : too many players or exits\n", game);
+		i++;
+	}
+}
