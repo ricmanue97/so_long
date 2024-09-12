@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/08/30 16:42:31 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:33:47 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct	s_game{
 	t_map		*map;
 	int			img_width;
 	int			img_height;
+	int			player;
+	int			exit;
+	int			collectible;
 }				t_game;
 
 typedef struct	s_player{
