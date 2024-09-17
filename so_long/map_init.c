@@ -6,15 +6,15 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:52:23 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/17 15:16:03 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:18:57 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_strlen(char *str)
+size_t ft_strlen(char *str)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	if (!str)
@@ -22,6 +22,32 @@ int ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*a;
+	size_t	i;
+	size_t	lentot;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	lentot = ft_strlen(s + start);
+	if (lentot < len)
+		len = lentot;
+	a = (char *)malloc(sizeof(char) * (len + 1));
+	if (!a)
+		return (NULL);
+	while (i < len && s[start] != '\0')
+	{
+		a[i] = s[start];
+		i++;
+		start++;
+	}
+	a[i] = '\0';
+	return (a);
 }
 void	ft_height(t_map *map)
 {
