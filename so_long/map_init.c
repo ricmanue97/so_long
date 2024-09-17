@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:52:23 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 17:31:06 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/17 11:25:48 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,31 @@ int ft_strlen(char *str)
 void	ft_height(t_map *map)
 {
 	int i;
+	int fd;
+	char *line;
 
 	i = 0;
-	while (map->map_ber[i])
+	fd = open(map->path, O_RDONLY);
+	if (fd < 0)
+		ft_eror_management("Could not open file", map);
+	while (1)
 	{
-		map->map_height = i;
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		i++;
+		free(line);
 	}
+	close(fd);
+	map->map_height = i;
 }
 
-void ft_map_init(char *path, t_game *game)
+void	ft_map_init(t_game *game)
 {
+	int	fd;
+
+	fd = open(game->map->path, O_RDONLY);
+	if (fd < 0)
+		ft_eror_management("Could not open file", game);
 	
 }
