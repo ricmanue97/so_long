@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 16:43:39 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:29:06 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 			&& (ber_array[j] != 'C') && (ber_array[j] != 'E'))
 			ft_error_management("Error : ivalid sprite\n", game);
 		if (ber_array[j] == 'P')
+		{
 			game->player++;
+			game->player->x_player = j;
+			game->player->y_player = i;
+		}
 		else if (ber_array[j] == 'C')
 			game->collectible++;
 		else if (ber_array[j] == 'E')
