@@ -6,12 +6,12 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/12 14:33:47 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/17 11:12:59 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-# define sO_LONG_H
+# define SO_LONG_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -41,6 +41,7 @@ typedef struct	s_player{
 
 typedef struct	s_map{
 	char		**map_ber;
+	char		*path;
 	void		*img_floor1;
 	void		*img_floor2;
 	void		*img_wall;
