@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/19 10:06:39 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/05/14 09:52:36 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	unsigned int	i;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
+	i = 0;
+	if (s)
 	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
+		while (s[i])
+		{
+			write (fd, &s[i], 1);
+			i++;
+		}
 	}
-
 }
+
+/* int main()
+{
+	char *s = "Hello world!";
+	ft_putstr_fd(s, 1);
+} */

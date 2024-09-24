@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/09 14:22:17 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/09/23 15:39:23 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+size_t	ft_strlen(const char *c)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	size_t	i;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
-	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
-	}
-
+	i = 0;
+	while (c[i])
+		i++;
+	return (i);
 }
+
+/* #include<stdio.h>
+ #include <string.h>
+int main (void)
+{
+
+   char *str = "a\0daA";
+   printf("%zu", strlen(str));
+}  */

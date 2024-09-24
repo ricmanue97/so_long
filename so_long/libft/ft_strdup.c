@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/15 11:21:16 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/05/14 09:52:45 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strdup(const char *src)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	int		length;
+	char	*dest;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
-	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
-	}
-
+	length = ft_strlen (src) + 1;
+	dest = malloc(sizeof(char) * (length));
+	if (dest == NULL)
+		return (NULL);
+	ft_strlcpy(dest, (char *) src, length);
+	return (dest);
 }
+
+/* #include <stdio.h>
+int main(void)
+{
+	char *src = "Hello World!";
+	char *dest = ft_strdup(src);
+	printf("This is the dupped string :%s\n", dest);
+	free(dest);
+}  */

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/10 11:07:50 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/05/14 09:52:06 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	size_t			i;
+	unsigned char	*dest;
+	unsigned char	*source;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
+	dest = (unsigned char *) dst;
+	source = (unsigned char *) src;
+	i = 0;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
 	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
+		dest[i] = source[i];
+		i++;
 	}
-
+	return (dest);
 }

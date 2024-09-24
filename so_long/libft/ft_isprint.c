@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/09 14:10:26 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/04/22 10:48:02 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_isprint(int c)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
-
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
-	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
-	}
-
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }
+/* #include<stdio.h>
+int main (void)
+{
+
+    char *str = "asdaA";
+    printf("%d", ft_isalpha(str));
+} */

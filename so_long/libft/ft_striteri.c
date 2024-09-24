@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_management.c                                 :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:03:17 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:28:21 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/19 09:55:45 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/05/14 09:52:49 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	free_map(char **map)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	i;
+	unsigned int	i;
 
-	if (!map)
-		exit(0);
 	i = 0;
-	while (map[i])
+	while (s[i])
 	{
-		free(map[i]);
+		f(i, &s[i]);
 		i++;
 	}
-	free(map);
 }
-
-void	ft_error_management(char *message, t_game *game)
+/* #include <stdio.h>
+void        print_index_and_char(unsigned int index, char *c)
 {
-	printf("%s", message);
-	free_map(game->map->map_ber);
-	exit(1);
+        printf("Index: %d, Char: %c\n", index, *c);
 }
+int        main(void)
+{
+        char        str[] = "Hello, World!";
+        ft_striteri(str, &print_index_and_char);
+        return (0);
+} */

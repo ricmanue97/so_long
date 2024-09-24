@@ -6,24 +6,11 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:23:51 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/06/26 15:04:40 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:40:54 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_strlen(char *c)
-{
-	int	i;
-
-	i = 0;
-	if (c)
-	{
-		while (c[i])
-			i++;
-	}
-	return (i);
-}
 
 char	*ft_strjoin(char *s1, char *s2)
 {

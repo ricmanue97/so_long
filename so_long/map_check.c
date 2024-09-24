@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/18 13:13:05 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:31:09 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_file_check (char *file, t_game *game)
 	len = ft_strlen(file);
 	if (len < 4 || ft_strncmp((&file[len - 4]), ".ber", 4) != 0)
 	{
-		ft_printf("Error : not ber file");
-		free_game(game);
+		ft_error_management("Error : not ber file", game);
+		free_map(game->map->map_ber);
 		exit(1);
 	}
 }
@@ -61,7 +61,7 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 			ft_error_management("Error : ivalid sprite\n", game);
 		if (ber_array[j] == 'P')
 		{
-			game->player++;
+			game->player_count++;
 			game->player->x_player = j;
 			game->player->y_player = i;
 		}
@@ -80,7 +80,7 @@ void	ft_map_sprite_check(t_game *game)
 	while (i < game->map->map_height)
 	{
 		ft_sprite_limit_check(game, i, 0);
-		if ((game->player > 1) || (game->exit > 1))
+		if ((game->player_count > 1) || (game->exit > 1))
 		ft_error_management("Error : too many players or exits\n", game);
 		i++;
 	}

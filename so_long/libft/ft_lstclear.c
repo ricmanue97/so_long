@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/22 10:04:02 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/05/14 09:51:35 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	t_list	*tmp;
+	t_list	*next;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
+	if (!del || !*lst)
+		return ;
+	tmp = *lst;
+	while (tmp)
 	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
+		next = tmp->next;
+		ft_lstdelone(tmp, del);
+		tmp = next;
 	}
-
+	*lst = NULL;
 }

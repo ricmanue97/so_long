@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/11 12:46:57 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/04/11 12:46:58 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strchr(const char *s, int c)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	size_t	i;
+	char	*s1;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
-	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
-	}
-
+	i = 0;
+	s1 = (char *) s;
+	while (s[i] != '\0' && s[i] != (char)c)
+		i++;
+	if (s[i] == (char)c)
+		return (&s1[i]);
+	return (0);
 }
+/* #include <stdio.h>
+
+int main(void)
+{
+    const char *s = "Hello World!";
+    int c = 'l';
+
+    printf("%s\n", ft_strchr(s, c));
+    printf("%s\n", strchr(s, c));
+} */

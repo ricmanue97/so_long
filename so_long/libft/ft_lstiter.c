@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstliter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/22 10:25:46 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/04/22 11:20:14 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	t_list	*tmp;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
+	tmp = lst;
+	if (!lst || !f)
+		return ;
+	while (tmp)
 	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
+		f(tmp->content);
+		tmp = tmp->next;
 	}
-
 }

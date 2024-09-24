@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/04/09 16:53:41 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/05/14 09:52:16 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	*ft_memset(void *c, int d, size_t len)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	unsigned char	*str;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
+	str = (unsigned char *) c;
+	while (len != 0)
 	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
+		str[len - 1] = d;
+		len--;
 	}
-
+	return (str);
 }
+
+/* int main()
+{
+	char str[12] = "Hello World";
+	size_t len = 11;
+	printf("%s\n", str);
+	printf("%s\n", ft_memset(str, 48, len));
+
+} */

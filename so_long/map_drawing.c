@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_drawing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Created: 2024/09/24 11:52:36 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/09/24 15:36:24 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int ac, char **av)
+void	ft_map_drawing(t_game *game)
 {
-	t_game		*game;
-	t_map		*map;
-	t_player	*player;
+	int		i;
+	int		j;
+	char	**map;
 
-	game->map = &map;
-	game->player = &player;
-
-	if (ac == 2)
+	i = 0;
+	map = game->map->map_ber;
+	while (map[i])
 	{
-		ft_file_check(av[1], &game);
-		game->map->path = av[1];
-		ft_map_init(&game);
-		ft_game_init(&game);
-
-		free(game->map->map_ber);
+		j = 0;
+		while (map[i][j])
+		{
+			
+		}
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:23:43 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/06/26 15:07:40 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:42:39 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <fcntl.h>
 # include <limits.h>
 
-int		ft_strlen(char *c);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_newline(char *str);
