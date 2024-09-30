@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:36 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 15:36:24 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:28:30 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,24 @@ void	ft_map_drawing(t_game *game)
 		j = 0;
 		while (map[i][j])
 		{
-			
+			if(game->map->map_ber[i][j] == '1')
+				ft_sprite_set(game, game->map->img_wall, i, j);
+			if(game->map->map_ber[i][j] == '0' )
+				ft_sprite_set(game, game->map->img_floor1, i, j);
+			if(game->map->map_ber[i][j] == 'C' )
+				ft_sprite_set(game, game->map->img_collectible, i, j);
+			if(game->map->map_ber[i][j] == 'P' )
+				ft_sprite_set(game, game->map->img_player, i, j);
+			if(game->map->map_ber[i][j] == 'E' )
+				ft_sprite_set(game, game->map->img_exit, i, j);
+			j++;
 		}
+		i++;
 	}
 }
+
+void	ft_sprite_set(t_game *game, void *img, int i, int j)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img, i, j);
+}
+
