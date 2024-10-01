@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:39:16 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:25:04 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 
 typedef struct	s_player{
-	void	**img_player;
 	int		x_player;
 	int		y_player;
 	int		moves;
@@ -34,7 +33,7 @@ typedef struct	s_map{
 	char		**map_ber;
 	char		*path;
 	void		*img_floor1;
-	void		*img_floor2;
+	void		*img_player;
 	void		*img_wall;
 	void		*img_collectible;
 	void		*img_exit;

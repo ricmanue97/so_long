@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:44:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:20:59 by ricmanue         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:02:40 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_image_init(t_game *game)
 {
-	ft_which_sprite(game, game->player->img_player, "./test1.xpm");
+	ft_which_sprite(game, game->map->img_player, "./test1.xpm");
 	ft_which_sprite(game, game->map->img_floor1, "./floor1.xpm");
-	ft_which_sprite(game, game->map->img_floor2, "./floor2.xpm");
 	ft_which_sprite(game, game->map->img_wall, "./wall.xpm");
 }
 
