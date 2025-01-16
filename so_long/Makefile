@@ -3,55 +3,55 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: ricmanue < ricmanue@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 13:59:18 by ricmanue          #+#    #+#              #
-#    Updated: 2024/09/24 11:25:17 by ricmanue         ###   ########.fr        #
+#    Updated: 2025/01/15 11:11:39 by ricmanue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	so_long
-CC			=	cc
-FLAGS		=	-Wall -Wextra -Werror
-MLX			=	./mlx_linux
-LFT			=	libft/libft.a
-INC			=	-I ./inc -I ./libft -I ./mlx
-LIB			=	-L ./libft -lft -L ./mlx_linux -lmlx -lXext -lX11 -lm -lbsd
-OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
-SRC			=	error_management.c game_init.c map_check.c map_init.c so_long.c \
-				valid_map_checker.c \
+# Compiler and CFLAGS
+CC                      = @cc
+CFLAGS                  = -Wall -Wextra -Werror -I/opt/X11/include -I./minilibx-linux
+LDFLAGS                 = -L/opt/X11/lib -lX11 -L./minilibx-linux -lmlx -lXext -lX11
+RM                      = @rm -f
 
-all:		$(MLX) $(LFT) obj $(NAME)
+# Source Files
+SO_LONG_SRC             = error_management.c game_init.c map_check.c \
+						map_drawing.c map_init.c so_long.c \
+						valid_map_checker.c
 
-$(NAME):	$(OBJ)
-			$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
+# Object Files
+SO_LONG_OBJECTS         = error_management.o game_init.o map_check.o \
+						map_drawing.o map_init.o so_long.o \
+						valid_map_checker.o
 
-$(MLX):
-			@echo " [ .. ] | Compiling minilibx.."
-			@make -s -C mlx
-			@echo " [ OK ] | Minilibx ready!"
+# Executable
+SO_LONG                 = so_long
 
-$(LFT):
-			@echo " [ .. ] | Compiling libft.."
-			@make -s -C libft
-			@echo " [ OK ] | Libft ready!"
+# Rules
+all:                    $(SO_LONG)
 
-obj:
-			@mkdir -p obj
+$(SO_LONG):             $(SO_LONG_OBJECTS) $(LIBFT)
+						@echo "Building $(SO_LONG)..."
+						$(CC) $(CFLAGS) $(SO_LONG_OBJECTS) $(LIBFT) $(LDFLAGS) -o $(SO_LONG)
+						@echo "$(SO_LONG) has been successfully built"
 
-obj/%.o:	src/%.c
-			$(CC) $(FLAGS) $(INC) -o $@ -c $<
+%.o: %.c
+						@echo "Compiling $<..."
+						$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-			@make -s $@ -C libft
-			@rm -rf $(OBJ) obj
-			@echo "object files removed."
+						$(RM) $(SO_LONG_OBJECTS)
+						@make -s clean -C ./libft
+						@echo "Cleaned up .o files."
 
-fclean:		clean
-			@make -s $@ -C libft
-			@rm -rf $(NAME)
-			@echo "binary file removed."
+fclean:                 clean
+						@$(RM) $(SO_LONG)
+						@make -s fclean -C ./libft
+						@echo "Removed executables."
 
-re:			fclean all
+re:                     fclean all
+						@echo "Fully rebuilt"
 
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean re

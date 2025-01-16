@@ -1,39 +1,100 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ricmanue <ricmanue@student.42lisboa.com>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/12 15:04:36 by ricmanue          #+#    #+#              #
+#    Updated: 2024/05/07 16:03:30 by ricmanue         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	=	libft.a
 
-SRCS	=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-		ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
-		ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c \
-		ft_strdup.c ft_striteri.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
-		ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
+INC	=	inc/
+SRC_DIR	=	src/
+OBJ_DIR	=	obj/
 
-SRC_B	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-		ft_lstclear.c ft_lstiter.c \
-
-CC	=	@cc
-CFLAGS	=	-Wall -Werror -Wextra
-OBJS	=	${SRCS:.c=.o}
-OBJS_B	=	${SRC_B:.c=.o}
+CC	=	@gcc
+CFLAGS	=	-Wall -Werror -Wextra -I
 RM	=	@rm -f
 LIBC	=	@ar -rcs
-INCS	=	.
 
-${NAME}: ${OBJS}
-	@echo "Created .o files."
-	${LIBC} ${NAME} ${OBJS}
+FTIS_DIR		=	$(SRC_DIR)ft_is/ft_isalnum.c \
+					$(SRC_DIR)ft_is/ft_isalpha.c \
+					$(SRC_DIR)ft_is/ft_isascii.c \
+					$(SRC_DIR)ft_is/ft_isdigit.c \
+					$(SRC_DIR)ft_is/ft_isprint.c
+
+FTMEM_DIR		=	$(SRC_DIR)ft_mem/ft_bzero.c \
+					$(SRC_DIR)ft_mem/ft_calloc.c \
+					$(SRC_DIR)ft_mem/ft_memchr.c \
+					$(SRC_DIR)ft_mem/ft_memcmp.c \
+					$(SRC_DIR)ft_mem/ft_memmove.c \
+					$(SRC_DIR)ft_mem/ft_memset.c
+
+FTPUT_DIR		=	$(SRC_DIR)ft_put/ft_putchar_fd.c \
+					$(SRC_DIR)ft_put/ft_putendl_fd.c \
+					$(SRC_DIR)ft_put/ft_putnbr_fd.c \
+					$(SRC_DIR)ft_put/ft_putstr_fd.c
+
+FTTO_DIR		=	$(SRC_DIR)ft_to/ft_atoi.c \
+					$(SRC_DIR)ft_to/ft_itoa.c \
+					$(SRC_DIR)ft_to/ft_tolower.c \
+					$(SRC_DIR)ft_to/ft_toupper.c
+
+FTSTR_DIR		=	$(SRC_DIR)ft_str/ft_split.c \
+					$(SRC_DIR)ft_str/ft_strchr.c \
+					$(SRC_DIR)ft_str/ft_strdup.c \
+					$(SRC_DIR)ft_str/ft_striteri.c \
+					$(SRC_DIR)ft_str/ft_strjoin.c \
+					$(SRC_DIR)ft_str/ft_strlcat.c \
+					$(SRC_DIR)ft_str/ft_strlcpy.c \
+					$(SRC_DIR)ft_str/ft_strlen.c \
+					$(SRC_DIR)ft_str/ft_strmapi.c \
+					$(SRC_DIR)ft_str/ft_strncmp.c \
+					$(SRC_DIR)ft_str/ft_strnstr.c \
+					$(SRC_DIR)ft_str/ft_strrchr.c \
+					$(SRC_DIR)ft_str/ft_strtrim.c \
+					$(SRC_DIR)ft_str/ft_substr.c
+
+FTLST_DIR		=	$(SRC_DIR)ft_lst/ft_lstadd_back.c \
+					$(SRC_DIR)ft_lst/ft_lstadd_front.c \
+					$(SRC_DIR)ft_lst/ft_lstclear.c \
+					$(SRC_DIR)ft_lst/ft_lstdelone.c \
+					$(SRC_DIR)ft_lst/ft_lstiter.c \
+					$(SRC_DIR)ft_lst/ft_lstlast.c \
+					$(SRC_DIR)ft_lst/ft_lstmap.c \
+					$(SRC_DIR)ft_lst/ft_lstnew.c \
+					$(SRC_DIR)ft_lst/ft_lstsize.c
+
+FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_printf.c \
+					$(SRC_DIR)ft_printf/ft_digit.c \
+					$(SRC_DIR)ft_printf/ft_text.c \
+					$(SRC_DIR)ft_printf/ft_conversions.c
+
+GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c \
+					$(SRC_DIR)get_next_line/get_next_line_utils.c
+
+SRC	= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
+
+OBJ	=	$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
 all: ${NAME}
 
-bonus: ${NAME} ${OBJS_B}
-	${LIBC} ${NAME} ${OBJS_B}
-	touch bonus
+${NAME}: ${OBJ}
+	${LIBC} ${NAME} ${OBJ}
+
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+clean:
+	${RM} -r ${OBJ_DIR}
 
 fclean: clean
 	${RM} ${NAME}
-	@echo "Cleaned libft.a."
-
-clean:
-	${RM} -f ${OBJS} ${OBJS_B} bonus
-	@echo "Cleaned .o files."
 
 re: fclean all
 
