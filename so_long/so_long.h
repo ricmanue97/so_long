@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricmanue < ricmanue@student.42lisboa.co    +#+  +:+       +#+        */
+/*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/01/15 11:35:47 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:47:07 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ typedef struct s_player {
 typedef struct s_map {
 	char		**map_ber;
 	char		*path;
-	void		*img_floor1;
-	void		*img_player;
-	void		*img_wall;
-	void		*img_collectible;
+	void		*floor;
+	void		*player;
+	void		*wall;
+	void		*collectible;
 	void		*img_exit;
 	int			map_width;
 	int			map_height;
@@ -71,5 +71,8 @@ void	ft_sprite_set(t_game *game, void *img, int i, int j);
 static void	ft_flood_fill(int i, int j, char **map_ber, t_map *map);
 static char	**ft_map_duplicate(t_game *game);
 void	ft_valid_map(t_game *game);
+void	ft_game_interface(t_game *game);
+int	ft_key_register(int key, t_game *game);
+void	ft_sprites_in_window(t_game *game);
 
 #endif

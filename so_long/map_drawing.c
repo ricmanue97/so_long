@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 11:52:36 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/10/01 14:13:26 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:38:33 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	ft_map_drawing(t_game *game)
 		while (map[i][j])
 		{
 			if(game->map->map_ber[i][j] == '1')
-				ft_sprite_set(game, game->map->img_wall, i, j);
+				ft_sprite_set(game, game->map->wall, i, j);
 			if(game->map->map_ber[i][j] == '0' )
-				ft_sprite_set(game, game->map->img_floor1, i, j);
+				ft_sprite_set(game, game->map->floor, i, j);
 			if(game->map->map_ber[i][j] == 'C' )
-				ft_sprite_set(game, game->map->img_collectible, i, j);
+				ft_sprite_set(game, game->map->collectible, i, j);
 			if(game->map->map_ber[i][j] == 'P' )
-				ft_sprite_set(game, game->map->img_player, i, j);
+				ft_sprite_set(game, game->map->player, i, j);
 			if(game->map->map_ber[i][j] == 'E' )
 				ft_sprite_set(game, game->map->img_exit, i, j);
 			j++;
