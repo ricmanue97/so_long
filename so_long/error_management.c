@@ -6,13 +6,13 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:03:17 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:28:21 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:17:42 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(char **map)
+void	ft_free_map(char **map)
 {
 	int	i;
 
@@ -30,6 +30,13 @@ void	free_map(char **map)
 void	ft_error_management(char *message, t_game *game)
 {
 	printf("%s", message);
-	free_map(game->map->map_ber);
+	ft_free_map(game->map->map_ber);
 	exit(1);
+}
+
+void	ft_exit(t_game *game)
+{
+	mlx_destroy_window(game->mlx , game->win);
+	ft_free_map(game->map->map_ber);
+	exit (0);
 }

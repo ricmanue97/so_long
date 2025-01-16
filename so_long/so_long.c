@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/24 11:42:20 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:11:38 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int main(int ac, char **av)
 		game->map->path = av[1];
 		ft_map_init(&game);
 		ft_game_init(&game);
-
+		ft_map_check(&game);
+		
 		free(game->map->map_ber);
 	}
 
