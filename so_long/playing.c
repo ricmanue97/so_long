@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:03:47 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 16:51:33 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:31:09 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	ft_key_register(int keycode, t_game *game)
 		return (0);
 	if (move_player == 1)
 	{
-		ft_printf("Congrats, finished with %d steps", game->player->moves);
+		ft_printf("Congrats, caught them all with %d steps",
+		 game->player->moves);
 		ft_exit(game);
 	}
 	ft_sprites_in_window(game);
