@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/01/16 14:17:28 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:33:33 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,21 @@ typedef struct s_game {
 
 void	ft_free_map(char **map);
 void	ft_error_management(char *message, t_game *game);
-//void	ft_image_init(t_game *game);
-//void	ft_which_sprite(t_game *game, void **img, char *path);
-//void	ft_game_init(t_game *game);
-void	ft_file_check(char *file, t_game *game);
-void	ft_wall_check(t_game *game);
+void	ft_exit(t_game *game);
+void	ft_image_init(t_game *game);
+void	ft_which_sprite(t_game *game, void **img, char *path);
+void	ft_game_init(t_game *game);
+void	ft_sprites_in_window(t_game *game);
+void	ft_game_interface(t_game *game);
+void	ft_file_check (char *file, t_game *game);
+void	ft_wall_check (t_game *game);
 void	ft_sprite_limit_check(t_game *game, int i, int j);
 void	ft_map_sprite_check(t_game *game);
 void	ft_map_check(t_game *game);
 void	ft_map_drawing(t_game *game);
 void	ft_sprite_set(t_game *game, void *img, int i, int j);
+int	ft_move(t_game *game, int move_x, int move_y);
+int	ft_key_register(int keycode, t_game *game);
 void	ft_valid_map(t_game *game);
-void	ft_game_interface(t_game *game);
-int	ft_key_register(int key, t_game *game);
-void	ft_sprites_in_window(t_game *game);
-void	ft_exit(t_game *game);
+
 #endif

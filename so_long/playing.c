@@ -6,15 +6,15 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:03:47 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/01/16 14:06:01 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:03:25 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_move(t_game *game, int move_x, int move_y)
+int	ft_move(t_game *game, int move_x, int move_y)
 {
-	
+
 }
 
 int	ft_key_register(int keycode, t_game *game)

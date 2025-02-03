@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:44:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/10/01 15:02:40 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:55:03 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	ft_image_init(t_game *game)
 {
-	ft_which_sprite(game, game->map->img_player, "./test1.xpm");
-	ft_which_sprite(game, game->map->img_floor1, "./floor1.xpm");
-	ft_which_sprite(game, game->map->img_wall, "./wall.xpm");
+	ft_which_sprite(game, game->map->player, "./sprites/test1.xpm");
+	ft_which_sprite(game, game->map->floor, "./sprites/floor1.xpm");
+	ft_which_sprite(game, game->map->wall, "./sprites/wall.xpm");
+	ft_which_sprite(game, game->map->collectible, "./sprites/collictible.xpm");
+	ft_which_sprite(game, game->map->img_exit, "./sprites/exit.xpm");
 }
 
 void	ft_which_sprite(t_game *game, void **img, char *path)

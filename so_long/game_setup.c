@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:17:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/01/16 11:46:43 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:34:34 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_sprites_in_window(t_game *game)
 		j = 0;
 		while (j < game->map->map_width)
 		{
-			put_image(game, game->map->map_ber[i][j], (j * 64), (i * 64));
+			ft_put_img(game, game->map->map_ber[i][j], (j * 64), (i * 64));
 			j++;
 		}
 		i++;
@@ -83,7 +83,7 @@ void	ft_game_interface(t_game *game)
 			(game->map->map_height * 64), "So_long");
 	init_img_to_mlx(game);
 	put_image_to_window(game);
-	mlx_hook(game->win, DestroyNotify, NoEventMask, free_map, game);
+	mlx_hook(game->win, DestroyNotify, NoEventMask, ft_free_map, game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, ft_key_register, game);
 	mlx_loop(game->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
-/*   Updated: 2024/09/18 11:53:13 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:32:45 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ft_valid_map(t_game *game)
 		{
 			if (map_duplicate[i][j] != 'F')
 				{
-					ft_error_management("Map does not have solution", game);
 					free(map_duplicate);
+					ft_error_management("Map does not have solution", game);
 				}
 				j++;
 		}

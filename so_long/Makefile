@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ricmanue < ricmanue@student.42lisboa.co    +#+  +:+       +#+         #
+#    By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 13:59:18 by ricmanue          #+#    #+#              #
-#    Updated: 2025/01/15 11:11:39 by ricmanue         ###   ########.fr        #
+#    Updated: 2025/02/03 10:58:19 by ricmanue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ LDFLAGS                 = -L/opt/X11/lib -lX11 -L./minilibx-linux -lmlx -lXext -
 RM                      = @rm -f
 
 # Source Files
-SO_LONG_SRC             = error_management.c game_init.c map_check.c \
-						map_drawing.c map_init.c so_long.c \
+SO_LONG_SRC             = error_management.c game_init.c game_setup.c \
+						map_check.c map_drawing.c playing.c so_long.c \
 						valid_map_checker.c
 
 # Object Files
-SO_LONG_OBJECTS         = error_management.o game_init.o map_check.o \
-						map_drawing.o map_init.o so_long.o \
+SO_LONG_OBJECTS         = error_management.o game_init.o game_setup.o \
+						map_check.o map_drawing.o playing.o so_long.o \
 						valid_map_checker.o
 
 # Executable
