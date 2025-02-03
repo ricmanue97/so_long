@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:17:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 11:34:34 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:19:37 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,13 @@ void	ft_sprites_in_window(t_game *game)
 	}
 }
 
-
 void	ft_game_interface(t_game *game)
 {
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		ft_error_management("Error : mlx not initialised\n", game);
 	game->win = mlx_new_window(game->mlx, (game->map->map_width * 64),
-			(game->map->map_height * 64), "So_long");
-	init_img_to_mlx(game);
-	put_image_to_window(game);
-	mlx_hook(game->win, DestroyNotify, NoEventMask, ft_free_map, game);
+			(game->map->map_height * 64), "Catch them all!!");
+	ft_init_sprites(game);
+	ft_sprites_in_window(game);
+	mlx_hook(game->win, DestroyNotify, NoEventMask, ft_exit, game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, ft_key_register, game);
 	mlx_loop(game->mlx);
 }

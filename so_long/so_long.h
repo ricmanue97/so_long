@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 11:33:33 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:52:04 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include <stdbool.h>
 
 typedef struct s_player {
-	int		x_player;
-	int		y_player;
+	int		x;
+	int		y;
 	int		moves;
 }				t_player;
 
@@ -38,6 +38,8 @@ typedef struct s_map {
 	void		*wall;
 	void		*collectible;
 	void		*img_exit;
+	int			x_exit;
+	int			y_exit;
 	int			map_width;
 	int			map_height;
 	bool		error;
@@ -51,17 +53,14 @@ typedef struct s_game {
 	t_map		*map;
 	int			img_width;
 	int			img_height;
-	int			player_count;
 	int			exit;
+	int			player_count;
 	int			collectible;
 }				t_game;
 
 void	ft_free_map(char **map);
 void	ft_error_management(char *message, t_game *game);
-void	ft_exit(t_game *game);
-void	ft_image_init(t_game *game);
-void	ft_which_sprite(t_game *game, void **img, char *path);
-void	ft_game_init(t_game *game);
+int	ft_exit(t_game *game);
 void	ft_sprites_in_window(t_game *game);
 void	ft_game_interface(t_game *game);
 void	ft_file_check (char *file, t_game *game);
@@ -71,7 +70,6 @@ void	ft_map_sprite_check(t_game *game);
 void	ft_map_check(t_game *game);
 void	ft_map_drawing(t_game *game);
 void	ft_sprite_set(t_game *game, void *img, int i, int j);
-int	ft_move(t_game *game, int move_x, int move_y);
 int	ft_key_register(int keycode, t_game *game);
 void	ft_valid_map(t_game *game);
 

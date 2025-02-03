@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 11:32:45 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:42:58 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_valid_map(t_game *game)
 	char	**map_duplicate;
 
 	map_duplicate = ft_map_duplicate(game);
-	ft_flood_fill(game->player->y_player, game->player->x_player, map_duplicate,
+	ft_flood_fill(game->player->y, game->player->x, map_duplicate,
 	game->map );
 	i = 0;
 	while (i < game->map->map_height)

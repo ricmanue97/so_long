@@ -6,15 +6,39 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:03:47 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 11:03:25 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:51:33 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_move(t_game *game, int move_x, int move_y)
+static int	ft_move(t_game *game, int move_x, int move_y)
 {
+	char	next;
+	char	current;
 
+	next = game->map->map_ber[(game->player->y) + move_y]
+		[(game->player->x) + move_x];
+	current = game->map->map_ber[(game->player->y)][(game->player->x)];
+	if (next != '0')
+	{
+		game->player->moves++;
+		ft_printf("moves->%d\n", game->player->moves);
+		if (next == 'C')
+			game->collectible--;
+		if(current != 'E')
+		{
+			game->map->map_ber[(game->player->y)][(game->player->x)] = 'F';
+			game->map->map_ber[(game->map->y_exit)][(game->map->x_exit)] = 'E';
+		}
+		game->map->map_ber[(game->player->y) + move_y]
+		[(game->player->x) + move_x] = 'P';
+		game->player->x = game->player->x + move_x;
+		game->player->y = game->player->y + move_y;
+		if((next == 'E') && (game->collectible == 0))
+			return (1);
+	}
+	return(0);
 }
 
 int	ft_key_register(int keycode, t_game *game)
@@ -38,7 +62,7 @@ int	ft_key_register(int keycode, t_game *game)
 		ft_printf("Congrats, finished with %d steps", game->player->moves);
 		ft_exit(game);
 	}
-	put_image_to_window(game);
+	ft_sprites_in_window(game);
 	return (0);
 }
 

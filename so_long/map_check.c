@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 10:55:59 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:39:22 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 		if (ber_array[j] == 'P')
 		{
 			game->player_count++;
-			game->player->x_player = j;
-			game->player->y_player = i;
+			game->player->x = j;
+			game->player->y = i;
 		}
 		else if (ber_array[j] == 'C')
 			game->collectible++;
