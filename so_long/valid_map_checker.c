@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 14:42:58 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:25:34 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ void	ft_valid_map(t_game *game)
 	}
 	free(map_duplicate);
 }
+

@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 16:52:04 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:43:13 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	ft_map_drawing(t_game *game);
 void	ft_sprite_set(t_game *game, void *img, int i, int j);
 int	ft_key_register(int keycode, t_game *game);
 void	ft_valid_map(t_game *game);
+void	ft_map_creation(t_game *game);
 
 #endif

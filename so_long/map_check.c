@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 16:39:22 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:40:47 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_wall_check (t_game *game)
 	int i;
 
 	i = 0;
+		ft_printf("ola\n");
 	while (i < game->map->map_width)
 	{
 		if ((game->map->map_ber[0][i] == 1)
@@ -91,6 +92,7 @@ void	ft_map_check(t_game *game)
 	int	i;
 	int	len;
 	int	len_tmp;
+
 
 	if (game->map->map_ber[0] == NULL)
 		ft_error_management("Error : map file is empty\n", game);
