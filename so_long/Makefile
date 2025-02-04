@@ -6,52 +6,57 @@
 #    By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 13:59:18 by ricmanue          #+#    #+#              #
-#    Updated: 2025/02/03 14:11:58 by ricmanue         ###   ########.fr        #
+#    Updated: 2025/02/04 15:44:44 by ricmanue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Compiler and CFLAGS
-CC                      = @cc
-CFLAGS                  = -Wall -Wextra -Werror -I/opt/X11/include -I./minilibx-linux
-LDFLAGS                 = -L/opt/X11/lib -lX11 -L./minilibx-linux -lmlx -lXext -lX11
-RM                      = @rm -f
+NAME	=	so_long
 
-# Source Files
-SO_LONG_SRC             = error_management.c game_setup.c \
-						map_check.c map_drawing.c playing.c so_long.c \
-						valid_map_checker.c
+LIBFT	=	./libft/libft.a
+MLX		=	.././mlx_linux/libmlx.a
 
-# Object Files
-SO_LONG_OBJECTS         = error_management.o game_setup.o \
-						map_check.o map_drawing.o playing.o so_long.o \
-						valid_map_checker.o
+CC	=	@cc
+CFLAGS	=	-Wall -Werror -Wextra
+MLXFLAGS	=	-Iminilibx-linux -lXext -lX11 -lm -lz
+RM	=	@rm -f
 
-# Executable
-SO_LONG                 = so_long
+SRCS	=	error_management.c game_setup.c map_opening.c \
+			map_check.c map_drawing.c playing.c so_long.c \
+			valid_map_checker.c
 
-# Rules
-all:                    $(SO_LONG)
+OBJS	=	error_management.o game_setup.o map_opening.o\
+			map_check.o map_drawing.o playing.o so_long.o \
+			valid_map_checker.o
+all:		$(NAME)
 
-$(SO_LONG):             $(SO_LONG_OBJECTS) $(LIBFT)
-						@echo "Building $(SO_LONG)..."
-						$(CC) $(CFLAGS) $(SO_LONG_OBJECTS) $(LIBFT) $(LDFLAGS) -o $(SO_LONG)
-						@echo "$(SO_LONG) has been successfully built"
+$(NAME):	$(OBJS) $(LIBFT) $(MLX)
+		@echo "Make .o and so_long."
+		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
 
-%.o: %.c
-						@echo "Compiling $<..."
-						$(CC) $(CFLAGS) -c $< -o $@
+$(LIBFT):
+		@make -s -C ./libft
+
+$(MLX):
+		@make -s -C .././mlx_linux
+
+
+%.o:	$(SRCS)%.c
+		@$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-						$(RM) $(SO_LONG_OBJECTS)
-						@make -s clean -C ./libft
-						@echo "Cleaned up .o files."
+		$(RM) -r $(OBJS)
+		@make -s clean -C ./libft
+		@make -s clean -C .././mlx_linux
+		@echo "Clean .o files."
 
-fclean:                 clean
-						@$(RM) $(SO_LONG)
-						@make -s fclean -C ./libft
-						@echo "Removed executables."
+fclean:		clean
+		$(RM) $(NAME)
+		@make -s fclean -C ./libft
+		@echo "Clean exacuteble/s."
 
-re:                     fclean all
-						@echo "Fully rebuilt"
+re:		fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
+
+
