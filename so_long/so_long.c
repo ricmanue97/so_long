@@ -6,13 +6,13 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/04 16:39:50 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:33:32 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_game		game;
 	t_map		map;
@@ -20,7 +20,6 @@ int main(int ac, char **av)
 
 	game.map = &map;
 	game.player = &player;
-
 	if (ac == 2)
 	{
 		ft_file_check(av[1], &game);
@@ -28,8 +27,6 @@ int main(int ac, char **av)
 		ft_map_creation(&game);
 		ft_map_check(&game);
 		ft_game_interface(&game);
-		ft_game_interface(&game);
-
 		free(game.map->map_ber);
 	}
 	else

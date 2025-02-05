@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:17:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 14:19:37 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:19:05 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static void	ft_init_sprites(t_game *game)
 {
-	int height;
-	int width;
+	int	height;
+	int	width;
 
 	game->map->floor = mlx_xpm_file_to_image(game->mlx, "sprites/floor_1.xpm",
-		&width, &height);
+			&width, &height);
 	if (!game->map->floor)
 		ft_error_management("Error : floor sprite not initialised\n", game);
 	game->map->player = mlx_xpm_file_to_image(game->mlx, "sprites/player.xpm",
-		&width, &height);
+			&width, &height);
 	if (!game->map->player)
 		ft_error_management("Error : player sprite not initialised\n", game);
 	game->map->img_exit = mlx_xpm_file_to_image(game->mlx, "sprites/exit.xpm",
-		&width, &height);
+			&width, &height);
 	if (!game->map->img_exit)
 		ft_error_management("Error : exit sprite not initialised\n", game);
 	game->map->wall = mlx_xpm_file_to_image(game->mlx, "sprites/wall.xpm",
-		&width, &height);
+			&width, &height);
 	if (!game->map->wall)
 		ft_error_management("Error : wall sprite not initialised\n", game);
 	game->map->collectible = mlx_xpm_file_to_image(game->mlx,
-		"sprites/collictible.xpm",&width, &height);
+			"sprites/collictible.xpm", &width, &height);
 	if (!game->map->collectible)
 		ft_error_management("Error : collictible sprite not initialised\n",
 			game);
@@ -52,9 +52,10 @@ static void	ft_put_img(t_game *game, char c, int x, int y)
 	if (c == 'P')
 		mlx_put_image_to_window(game->mlx, game->win, game->map->player, x, y);
 	if (c == 'E')
-		mlx_put_image_to_window(game->mlx, game->win, game->map->img_exit, x, y);
-
+		mlx_put_image_to_window(game->mlx, game->win, game->map->img_exit,
+			x, y);
 }
+
 void	ft_sprites_in_window(t_game *game)
 {
 	int	i;

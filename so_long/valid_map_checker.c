@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/04 14:25:34 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:53:56 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 static void	ft_flood_fill(int i, int j, char **map_ber, t_map *map)
 {
-	if (i < 0 || (i >= map->map_height) || (j < 0 || j >map->map_width -1))
+	if (i < 0 || j < 0 || i >= map->map_height || j >= map->map_width \
+		|| map_ber[i][j] == '1' || map_ber[i][j] == 'F')
+		return ;
+	map_ber[i][j] = 'F';
+	ft_flood_fill(i + 1, j, map_ber, map);
+	ft_flood_fill(i - 1, j, map_ber, map);
+	ft_flood_fill(i, j + 1, map_ber, map);
+	ft_flood_fill(i, j - 1, map_ber, map);
+	/* if (i < 0 || (i >= map->map_height) || (j < 0 || j > map->map_width))
 		return ;
 	if (map_ber[i][j] != '1' && map_ber[i][j] != 'F')
 	{
@@ -23,9 +31,9 @@ static void	ft_flood_fill(int i, int j, char **map_ber, t_map *map)
 		ft_flood_fill(i + 1, j, map_ber, map);
 		ft_flood_fill(i, j - 1, map_ber, map);
 		ft_flood_fill(i, j + 1, map_ber, map);
-	}
-
+	} */
 }
+
 static char	**ft_map_duplicate(t_game *game)
 {
 	int		i;
@@ -41,7 +49,7 @@ static char	**ft_map_duplicate(t_game *game)
 		map_ber[i] = ft_strdup(game->map->map_ber[i]);
 		i++;
 	}
-	return(map_ber);
+	return (map_ber);
 }
 
 void	ft_valid_map(t_game *game)
@@ -51,8 +59,9 @@ void	ft_valid_map(t_game *game)
 	char	**map_duplicate;
 
 	map_duplicate = ft_map_duplicate(game);
+	ft_printf("%d e %d",game->player->y, game->player->x);
 	ft_flood_fill(game->player->y, game->player->x, map_duplicate,
-	game->map );
+		game->map);
 	i = 0;
 	while (i < game->map->map_height)
 	{
@@ -60,14 +69,13 @@ void	ft_valid_map(t_game *game)
 		while (j < game->map->map_width)
 		{
 			if (map_duplicate[i][j] != 'F')
-				{
-					free(map_duplicate);
-					ft_error_management("Map does not have solution", game);
-				}
-				j++;
+			{
+				free(map_duplicate);
+				ft_error_management("Map does not have solution", game);
+			}
+			j++;
 		}
 		i++;
 	}
 	free(map_duplicate);
 }
-

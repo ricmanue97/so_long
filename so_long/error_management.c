@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:03:17 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/03 14:19:22 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:16:40 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_error_management(char *message, t_game *game)
 
 int	ft_exit(t_game *game)
 {
-	mlx_destroy_window(game->mlx , game->win);
+	mlx_destroy_window(game->mlx, game->win);
 	ft_free_map(game->map->map_ber);
 	exit (0);
 }

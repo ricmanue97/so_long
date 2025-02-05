@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/05 16:59:51 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:22:32 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_wall_check(t_game *game)
 	i = 1;
 	while (i < game->map->map_height)
 	{
-		ft_printf("ola\n");
 		if ((game->map->map_ber[i][0] == '1')
 			&& game->map->map_ber[i][game->map->map_width] == '1')
 			i++;
@@ -55,9 +54,12 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 	char	*ber_array;
 
 	ber_array = game->map->map_ber[i];
+	game->player_count = 0;
+	game->exit = 0;
+	game->collectible = 0;
 	while (j < game->map->map_width)
 	{
-		if ((ber_array[j] != 0) && (ber_array[j] != 1) && (ber_array[j] != 'P')
+		if ((ber_array[j] != '0') && (ber_array[j] != '1') && (ber_array[j] != 'P')
 			&& (ber_array[j] != 'C') && (ber_array[j] != 'E'))
 			ft_error_management("Error : ivalid sprite\n", game);
 		if (ber_array[j] == 'P')

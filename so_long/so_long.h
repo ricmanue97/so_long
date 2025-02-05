@@ -6,13 +6,12 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/04 15:43:13 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:34:57 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
 
 # include "libft/inc/libft.h"
 # include "libft/inc/ft_printf.h"
@@ -24,13 +23,15 @@
 # include <X11/keysym.h>
 # include <stdbool.h>
 
-typedef struct s_player {
+typedef struct s_player
+{
 	int		x;
 	int		y;
 	int		moves;
 }				t_player;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char		**map_ber;
 	char		*path;
 	void		*floor;
@@ -46,7 +47,8 @@ typedef struct s_map {
 	bool		exit;
 }				t_map;
 
-typedef struct s_game {
+typedef struct s_game
+{
 	void		*mlx;
 	void		*win;
 	t_player	*player;
@@ -60,17 +62,17 @@ typedef struct s_game {
 
 void	ft_free_map(char **map);
 void	ft_error_management(char *message, t_game *game);
-int	ft_exit(t_game *game);
+int		ft_exit(t_game *game);
 void	ft_sprites_in_window(t_game *game);
 void	ft_game_interface(t_game *game);
-void	ft_file_check (char *file, t_game *game);
-void	ft_wall_check (t_game *game);
+void	ft_file_check(char *file, t_game *game);
+void	ft_wall_check(t_game *game);
 void	ft_sprite_limit_check(t_game *game, int i, int j);
 void	ft_map_sprite_check(t_game *game);
 void	ft_map_check(t_game *game);
 void	ft_map_drawing(t_game *game);
 void	ft_sprite_set(t_game *game, void *img, int i, int j);
-int	ft_key_register(int keycode, t_game *game);
+int		ft_key_register(int keycode, t_game *game);
 void	ft_valid_map(t_game *game);
 void	ft_map_creation(t_game *game);
 
