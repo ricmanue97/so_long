@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/06 16:31:45 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:58:28 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	ft_map_check(t_game *game)
 	game->player_count = 0;
 	game->exit = 0;
 	game->collectible = 0;
+	game->player->moves = 0;
 	ft_map_sprite_check(game);
 	ft_valid_map(game);
 }
