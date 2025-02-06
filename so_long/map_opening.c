@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:25:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/05 16:49:47 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:16:06 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,28 @@ static void	ft_map_ber(t_game *game, int fd)
 	}
 	game->map->map_ber = map;
 }
+static void	ft_exit_position(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i <= game->map->map_height)
+	{
+		j = 0;
+		while (j <= game->map->map_width)
+		{
+			if (game->map->map_ber[i][j] == 'E')
+			{
+				game->map->x_exit = j;
+				game->map->y_exit = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	ft_map_creation(t_game *game)
 {
@@ -72,5 +94,6 @@ void	ft_map_creation(t_game *game)
 	}
 	ft_map_height(game);
 	ft_map_ber(game, fd);
+	ft_exit_position(game);
 	close(fd);
 }

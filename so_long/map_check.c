@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/05 17:22:32 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:31:45 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 	char	*ber_array;
 
 	ber_array = game->map->map_ber[i];
-	game->player_count = 0;
-	game->exit = 0;
-	game->collectible = 0;
-	while (j < game->map->map_width)
+	while (j <= game->map->map_width)
 	{
 		if ((ber_array[j] != '0') && (ber_array[j] != '1') && (ber_array[j] != 'P')
 			&& (ber_array[j] != 'C') && (ber_array[j] != 'E'))
@@ -69,7 +66,7 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 			game->player->y = i;
 		}
 		else if (ber_array[j] == 'C')
-			game->collectible++;
+			game->collectible = game->collectible + 1;
 		else if (ber_array[j] == 'E')
 			game->exit++;
 		j++;
@@ -81,7 +78,7 @@ void	ft_map_sprite_check(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < game->map->map_height)
+	while (i <= game->map->map_height)
 	{
 		ft_sprite_limit_check(game, i, 0);
 		if ((game->player_count > 1) || (game->exit > 1))
@@ -109,6 +106,9 @@ void	ft_map_check(t_game *game)
 	}
 	game->map->map_width--;
 	ft_wall_check(game);
+	game->player_count = 0;
+	game->exit = 0;
+	game->collectible = 0;
 	ft_map_sprite_check(game);
 	ft_valid_map(game);
 }
