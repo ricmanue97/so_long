@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/06 16:50:18 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:14:31 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ static char	**ft_map_duplicate(t_game *game)
 	int		i;
 	char	**map_ber;
 
-	map_ber = malloc((sizeof(char *) * (game->map->map_height + 1)));
+	map_ber = malloc((sizeof(char *) * (game->map->map_height + 2)));
 	if (!map_ber)
 		ft_error_management("Failed memory allocation", game);
-	map_ber[game->map->map_height] = NULL;
+
 	i = 0;
 	while (i <= game->map->map_height)
 	{
 		map_ber[i] = ft_strdup(game->map->map_ber[i]);
 		i++;
 	}
+	map_ber[i]= NULL;
 	return (map_ber);
 }
 
@@ -59,12 +60,12 @@ void	ft_valid_map(t_game *game)
 		{
 			if (map_duplicate[i][j] != '1' && map_duplicate[i][j] != 'F' && map_duplicate[i][j] != '0')
 			{
-				free(map_duplicate);
+				ft_free_map_dup(map_duplicate);
 				ft_error_management("Map does not have solution\n", game);
 			}
 			j++;
 		}
 		i++;
 	}
-	free(map_duplicate);
+	ft_free_map_dup(map_duplicate);
 }

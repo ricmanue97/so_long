@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:17:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/06 12:07:00 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/07 08:43:40 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_game_interface(t_game *game)
 	game->win = mlx_new_window(game->mlx, ((game->map->map_width + 1) * 64),
 			((game->map->map_height + 1) * 64), "Catch them all!!");
 	ft_init_sprites(game);
+
 	ft_sprites_in_window(game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, ft_key_register, game);
 	mlx_hook(game->win, DestroyNotify, NoEventMask, ft_exit, game);

@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/06 16:58:28 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:38:46 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_file_check(char *file, t_game *game)
 	if (len < 4 || ft_strncmp((&file[len - 4]), ".ber", 4) != 0)
 	{
 		ft_error_management("Error : not ber file", game);
-		ft_free_map(game->map->map_ber);
+		ft_free_map(game);
 		exit(1);
 	}
 }
@@ -112,4 +112,5 @@ void	ft_map_check(t_game *game)
 	game->player->moves = 0;
 	ft_map_sprite_check(game);
 	ft_valid_map(game);
+	ft_exit_position(game);
 }

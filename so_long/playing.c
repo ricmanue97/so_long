@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:03:47 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/06 17:01:56 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:22:40 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	ft_move(t_game *game, int move_x, int move_y)
 		if (current != 'E')
 		{
 			game->map->map_ber[(game->player->y)][(game->player->x)] = '0';
-			ft_printf("ola\n");
 			game->map->map_ber[(game->map->y_exit)][(game->map->x_exit)] = 'E';
 		}
 		game->map->map_ber[(game->player->y) + move_y][(game->player->x) + move_x] = 'P';
