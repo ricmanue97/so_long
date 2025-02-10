@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:03:17 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/07 12:00:28 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:37:04 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_free_map(t_game *game)
 	}
 	free(game->map->map_ber);
 }
+
 void	ft_free_map_dup(char **map)
 {
 	int	i;

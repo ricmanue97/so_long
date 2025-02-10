@@ -6,21 +6,20 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/07 11:38:46 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:13:10 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_file_check(char *file, t_game *game)
+void	ft_file_check(char *file)
 {
 	size_t	len;
 
 	len = ft_strlen(file);
 	if (len < 4 || ft_strncmp((&file[len - 4]), ".ber", 4) != 0)
 	{
-		ft_error_management("Error : not ber file", game);
-		ft_free_map(game);
+		ft_printf("Error : not ber file\n");
 		exit(1);
 	}
 }
@@ -30,7 +29,7 @@ void	ft_wall_check(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < game->map->map_width)
+	while (i <= game->map->map_width)
 	{
 		if ((game->map->map_ber[0][i] == '1')
 			&& game->map->map_ber[game->map->map_height][i] == '1')
@@ -39,7 +38,7 @@ void	ft_wall_check(t_game *game)
 			ft_error_management("Error : map frame\n", game);
 	}
 	i = 1;
-	while (i < game->map->map_height)
+	while (i <= game->map->map_height)
 	{
 		if ((game->map->map_ber[i][0] == '1')
 			&& game->map->map_ber[i][game->map->map_width] == '1')
@@ -56,9 +55,10 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 	ber_array = game->map->map_ber[i];
 	while (j <= game->map->map_width)
 	{
-		if ((ber_array[j] != '0') && (ber_array[j] != '1') && (ber_array[j] != 'P')
+		if ((ber_array[j] != '0') && (ber_array[j] != '1')
+			&& (ber_array[j] != 'P')
 			&& (ber_array[j] != 'C') && (ber_array[j] != 'E'))
-			ft_error_management("Error : ivalid sprite\n", game);
+			ft_error_management("Error : invalid sprite\n", game);
 		if (ber_array[j] == 'P')
 		{
 			game->player_count++;
@@ -66,7 +66,7 @@ void	ft_sprite_limit_check(t_game *game, int i, int j)
 			game->player->y = i;
 		}
 		else if (ber_array[j] == 'C')
-			game->collectible = game->collectible + 1;
+			game->collectible++;
 		else if (ber_array[j] == 'E')
 			game->exit++;
 		j++;
@@ -81,10 +81,14 @@ void	ft_map_sprite_check(t_game *game)
 	while (i <= game->map->map_height)
 	{
 		ft_sprite_limit_check(game, i, 0);
-		if ((game->player_count > 1) || (game->exit > 1))
-			ft_error_management("Error : too many players or exits\n", game);
+		//ft_printf("PC = %d\n EC = %d\n", game->player_count, game->exit);
 		i++;
 	}
+	if ((game->player_count != 1) || (game->exit != 1))
+		ft_error_management("Error : only one player or exit\n", game);
+	if (game->collectible <= 0)
+		ft_error_management("Error : map has to have at least 1 collectible\n",
+			game);
 }
 
 void	ft_map_check(t_game *game)

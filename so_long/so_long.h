@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:29:56 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/07 11:58:43 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:11:36 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_error_management(char *message, t_game *game);
 int		ft_exit(t_game *game);
 void	ft_sprites_in_window(t_game *game);
 void	ft_game_interface(t_game *game);
-void	ft_file_check(char *file, t_game *game);
+void	ft_file_check(char *file);
 void	ft_wall_check(t_game *game);
 void	ft_sprite_limit_check(t_game *game, int i, int j);
 void	ft_map_sprite_check(t_game *game);

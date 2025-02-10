@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:17:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/07 08:43:40 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:07:29 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ static void	ft_init_sprites(t_game *game)
 	int	height;
 	int	width;
 
-	game->map->floor = mlx_xpm_file_to_image(game->mlx, "../sprites/floor_1.xpm",
-			&width, &height);
+	game->map->floor = mlx_xpm_file_to_image(game->mlx,
+			"../sprites/floor_1.xpm", &width, &height);
 	if (!game->map->floor)
 		ft_error_management("Error : floor sprite not initialised\n", game);
-	game->map->player = mlx_xpm_file_to_image(game->mlx, "../sprites/player.xpm",
-			&width, &height);
+	game->map->player = mlx_xpm_file_to_image(game->mlx,
+			"../sprites/player.xpm", &width, &height);
 	if (!game->map->player)
 		ft_error_management("Error : player sprite not initialised\n", game);
-	game->map->img_exit = mlx_xpm_file_to_image(game->mlx, "../sprites/exit.xpm",
-			&width, &height);
+	game->map->img_exit = mlx_xpm_file_to_image(game->mlx,
+			"../sprites/exit.xpm", &width, &height);
 	if (!game->map->img_exit)
 		ft_error_management("Error : exit sprite not initialised\n", game);
 	game->map->wall = mlx_xpm_file_to_image(game->mlx, "../sprites/wall.xpm",
@@ -80,7 +80,6 @@ void	ft_game_interface(t_game *game)
 	game->win = mlx_new_window(game->mlx, ((game->map->map_width + 1) * 64),
 			((game->map->map_height + 1) * 64), "Catch them all!!");
 	ft_init_sprites(game);
-
 	ft_sprites_in_window(game);
 	mlx_hook(game->win, KeyPress, KeyPressMask, ft_key_register, game);
 	mlx_hook(game->win, DestroyNotify, NoEventMask, ft_exit, game);

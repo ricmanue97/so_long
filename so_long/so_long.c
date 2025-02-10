@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/07 11:06:04 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:11:25 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	game.player = &player;
 	if (ac == 2)
 	{
-		ft_file_check(av[1], &game);
+		ft_file_check(av[1]);
 		game.map->path = av[1];
 		ft_map_creation(&game);
 		ft_map_check(&game);
