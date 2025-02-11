@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/10 11:13:10 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:09:44 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	ft_map_sprite_check(t_game *game)
 	while (i <= game->map->map_height)
 	{
 		ft_sprite_limit_check(game, i, 0);
-		//ft_printf("PC = %d\n EC = %d\n", game->player_count, game->exit);
 		i++;
 	}
 	if ((game->player_count != 1) || (game->exit != 1))
@@ -101,7 +100,7 @@ void	ft_map_check(t_game *game)
 	i = 0;
 	len = ft_strlen(game->map->map_ber[0]) - 1;
 	game->map->map_width = len;
-	while (i < game->map->map_height)
+	while (i <= game->map->map_height)
 	{
 		len = ft_strlen(game->map->map_ber[i]) - 1;
 		if (len != game->map->map_width)

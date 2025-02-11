@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/10 11:11:25 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:38:35 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_printf("Not the right amount of arguments");
+		ft_printf("Error : not the right amount of arguments");
 		return (0);
 	}
 	return (0);

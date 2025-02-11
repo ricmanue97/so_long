@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:25:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/07 12:14:26 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:38:11 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_map_height(t_game *game)
 	fd = open(game->map->path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error opening file\n");
+		ft_printf("Error : opening file\n");
 		exit(1);
 	}
 	game->map->map_height = 0;
@@ -90,7 +90,7 @@ void	ft_map_creation(t_game *game)
 	fd = open(game->map->path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error opening file\n");
+		ft_printf("Error: opening file\n");
 		exit(1);
 	}
 	ft_map_height(game);
