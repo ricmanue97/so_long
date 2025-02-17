@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 10:27:53 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/17 17:17:29 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:22:42 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 		ft_file_check(av[1]);
 		game.map->path = av[1];
 		ft_map_creation(&game);
-			game.player_count = 0;
+		game.player_count = 0;
 		game.exit = 0;
 		game.collectible = 0;
 		game.player->moves = 0;
