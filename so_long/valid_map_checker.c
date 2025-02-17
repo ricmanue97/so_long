@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:23:42 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/11 18:38:49 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:30:22 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ static char	**ft_map_duplicate(t_game *game)
 	map_ber = malloc((sizeof(char *) * (game->map->map_height + 2)));
 	if (!map_ber)
 		ft_error_management("Error : failed memory allocation", game);
-
 	i = 0;
 	while (i <= game->map->map_height)
 	{
 		map_ber[i] = ft_strdup(game->map->map_ber[i]);
 		i++;
 	}
-	map_ber[i]= NULL;
+	map_ber[i] = NULL;
 	return (map_ber);
 }
 
@@ -58,7 +57,8 @@ void	ft_valid_map(t_game *game)
 		j = 0;
 		while (j <= game->map->map_width)
 		{
-			if (map_duplicate[i][j] != '1' && map_duplicate[i][j] != 'F' && map_duplicate[i][j] != '0')
+			if (map_duplicate[i][j] != '1' && map_duplicate[i][j] != 'F'
+				&& map_duplicate[i][j] != '0')
 			{
 				ft_free_map_dup(map_duplicate);
 				ft_error_management("Error : does not have solution\n", game);

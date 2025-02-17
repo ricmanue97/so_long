@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:09:13 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/11 19:09:44 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:16:21 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,14 @@ void	ft_map_check(t_game *game)
 	while (i <= game->map->map_height)
 	{
 		len = ft_strlen(game->map->map_ber[i]) - 1;
+		if (i == game->map->map_height)
+			len = len + 1;
 		if (len != game->map->map_width)
 			ft_error_management("Error : map is not rectangular\n", game);
 		i++;
 	}
 	game->map->map_width--;
 	ft_wall_check(game);
-	game->player_count = 0;
-	game->exit = 0;
-	game->collectible = 0;
-	game->player->moves = 0;
 	ft_map_sprite_check(game);
 	ft_valid_map(game);
 	ft_exit_position(game);

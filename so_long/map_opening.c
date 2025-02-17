@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:25:22 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/11 18:38:11 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:28:53 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_map_ber(t_game *game, int fd)
 	char	*line;
 	char	**map;
 
-	map = malloc(sizeof(char *) * (game->map->map_height + 2));//
+	map = malloc(sizeof(char *) * (game->map->map_height + 2));
 	if (!map)
 	{
 		ft_printf("Errror : malloc of map failed");

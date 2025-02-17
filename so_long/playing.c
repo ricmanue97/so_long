@@ -6,7 +6,7 @@
 /*   By: ricmanue <ricmanue@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 09:03:47 by ricmanue          #+#    #+#             */
-/*   Updated: 2025/02/10 10:37:18 by ricmanue         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:29:38 by ricmanue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 static int	ft_move(t_game *game, int move_x, int move_y)
 {
 	char	next;
-	char	current;
 
 	next = game->map->map_ber[(game->player->y) + move_y]
 	[(game->player->x) + move_x];
-	current = game->map->map_ber[(game->player->y)][(game->player->x)];
 	if (next != '1')
 	{
 		game->player->moves++;
@@ -27,12 +25,13 @@ static int	ft_move(t_game *game, int move_x, int move_y)
 		if (next == 'C')
 			game->collectible--;
 		game->map->map_ber[(game->player->y)][(game->player->x)] = '0';
-		if (current != 'E')
+		if (game->map->map_ber[(game->player->y)][(game->player->x)] != 'E')
 		{
 			game->map->map_ber[(game->player->y)][(game->player->x)] = '0';
 			game->map->map_ber[(game->map->y_exit)][(game->map->x_exit)] = 'E';
 		}
-		game->map->map_ber[(game->player->y) + move_y][(game->player->x) + move_x] = 'P';
+		game->map->map_ber[(game->player->y) + move_y]
+		[(game->player->x) + move_x] = 'P';
 		game->player->x = game->player->x + move_x;
 		game->player->y = game->player->y + move_y;
 		if ((next == 'E') && (game->collectible == 0))
